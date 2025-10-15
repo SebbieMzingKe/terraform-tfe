@@ -12,19 +12,28 @@ module "project" {
 }
 
 module "workspace" {
-  for_each = local.project
+  for_each = local.workspace
 
   source  = "ALT-F4-LLC/workspace/tfe"
   version = "0.8.0"
 
   description = each.value.description
-  execution_mode = "local"
-  name = each.key
+  execution_mode = each.value.execution_mode
+  name = lookup(each.value, "name", each.key)
   organization_name = var.organization_name
   project_id = module.project[each.key].id 
+
+  vcs_repo = {
+    github_app_installation_id = data.tfe_github_app_installation.this.id
+    identifier = each.value.vcs_repo_identifier
+  }
 }
 
-# moved {
-#   from = module.workspace["cloud-infrastructure"]
-#   to = module.workspace["cloud-infrastructure-tfe"]
-# }
+moved {
+  from = module.workspace["cloud-infrastructure"]
+  to = module.workspace["cloud-infrastructure-tfe"]
+}
+moved {
+  from = module.project["cloud-infrastructure"]
+  to = module.project["cloud-infrastructure-tfe"]
+}

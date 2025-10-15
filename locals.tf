@@ -1,14 +1,16 @@
 locals {
   project = {
-    "cloud-infrastructure" = {
+    "cloud-infrastructure-tfe" = {
       description = "example description project"
     }
   }
   workspace = {
     "cloud-infrastructure-tfe" = {
       description    = "example description workspace"
-      execution_mode = "local"
-      project_id     = module.project["cloud-infrastructure"].id
+      execution_mode = "remote"
+      name = "cloud-infrastructure"
+      project_id     = module.project["cloud-infrastructure-tfe"].id
+      vcs_repo_identifier = "SebbieMzingKe/terraform-tfe"
     }
   }
 }
