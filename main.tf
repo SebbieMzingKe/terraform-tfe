@@ -24,7 +24,7 @@ module "workspace" {
   project_id = module.project[each.key].id 
 
   vcs_repo = {
-    github_app_installation_id = var.github_app_installation_id
+    github_app_installation_id = data.tfe_github_app_installation.this.id
     identifier = each.value.vcs_repo_identifier
   }
 }
