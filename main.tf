@@ -29,11 +29,11 @@ module "workspace" {
   }
 }
 
-moved {
-  from = module.workspace["cloud-infrastructure"]
-  to = module.workspace["cloud-infrastructure-tfe"]
-}
-moved {
-  from = module.project["cloud-infrastructure"]
-  to = module.project["cloud-infrastructure-tfe"]
-}
+# moved {
+#   from = module.workspace["cloud-infrastructure"]
+#   to = module.workspace["cloud-infrastructure-tfe"]
+# }
+# moved {
+#   from = module.project["cloud-infrastructure"]
+#   to = module.project["cloud-infrastructure-tfe"]
+# }
