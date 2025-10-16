@@ -19,7 +19,7 @@ module "workspace" {
 
   description = each.value.description
   execution_mode = each.value.execution_mode
-  name = lookup(each.value, "name", each.key)
+  name = each.key
   organization_name = var.organization_name
   project_id = module.project[each.key].id 
 
