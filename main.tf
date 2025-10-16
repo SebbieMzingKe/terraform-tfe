@@ -19,12 +19,12 @@ module "workspace" {
 
   description = each.value.description
   execution_mode = each.value.execution_mode
-  name = lookup(each.value, "name", each.key)
+  name = each.key
   organization_name = var.organization_name
   project_id = module.project[each.key].id 
 
   vcs_repo = {
-    github_app_installation_id = var.github_app_installation_id
+    github_app_installation_id = data.tfe_github_app_installation.this.id
     identifier = each.value.vcs_repo_identifier
   }
 }
