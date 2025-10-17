@@ -21,7 +21,7 @@ module "workspace" {
   execution_mode = each.value.execution_mode
   name = each.key
   organization_name = var.organization_name
-  project_id = module.project[each.key].id 
+  project_id = each.value.project_id 
 
   vcs_repo = {
     github_app_installation_id = data.tfe_github_app_installation.this.id
@@ -29,11 +29,11 @@ module "workspace" {
   }
 }
 
-moved {
-  from = module.workspace["cloud-infrastructure"]
-  to = module.workspace["cloud-infrastructure-tfe"]
-}
-moved {
-  from = module.project["cloud-infrastructure"]
-  to = module.project["cloud-infrastructure-tfe"]
-}
+# moved {
+#   from = module.workspace["cloud-infrastructure"]
+#   to = module.workspace["cloud-infrastructure-tfe"]
+# }
+# moved {
+#   from = module.project["cloud-infrastructure"]
+#   to = module.project["cloud-infrastructure-tfe"]
+# }
