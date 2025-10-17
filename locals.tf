@@ -13,7 +13,7 @@ locals {
     }
     "cloud-infrastructure-github" = {
       description = "example automation workspace for github resources"
-      execution_mode = "local"
+      execution_mode = "remote"
       project_id = module.project["cloud-infrastructure-tfe"].id
       vcs_repo_identifier = "${var.github_organization_name}/cloud-infrastructure-github"
     }
