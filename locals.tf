@@ -43,8 +43,8 @@ locals {
         },
       ]
     }
-   
-   
+
+
     "cloud-infrastructure-aws-cluster-prod" = {
       description         = "automation workspace for cluster resources"
       execution_mode      = "remote"
@@ -71,6 +71,26 @@ locals {
           category = "terraform"
           key      = "vpc_name"
           value    = "enterprise-cloud-infra"
+        },
+      ]
+    }
+
+    "cloud-infra-product-service-prod" = {
+      description         = "Automation for product service resources."
+      execution_mode      = "remote"
+      project_id          = module.project["cloud-infra-project"].id
+      vcs_repo_identifier = "${var.github_organization_name}/cloud-infra-product-service"
+
+      variables = [
+        {
+          category = "terraform"
+          key      = "cluster_name"
+          value    = "cloud-infra-seb-prod"
+        },
+        {
+          category = "terraform"
+          key      = "environment"
+          value    = "prod"
         },
       ]
     }
