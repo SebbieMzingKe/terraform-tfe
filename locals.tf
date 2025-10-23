@@ -78,7 +78,7 @@ locals {
     "cloud-infra-product-service-prod" = {
       description         = "Automation for product service resources."
       execution_mode      = "remote"
-      project_id          = module.project["cloud-infra-project"].id
+      project_id          = module.project["cloud-infrastructure-tfe"].id
       vcs_repo_identifier = "${var.github_organization_name}/cloud-infra-product-service"
 
       variables = [
